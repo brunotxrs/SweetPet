@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetPet</title>
+    <link rel="shortcut icon" href="./src/assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./src/css/index.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header id="header-index">
+        <section class="first-section">
+            <a href="./index.html" id="logo-index">
+                <img class="logo-mobile" src="./src/assets/imgs/logo_mobile.png" alt="Logo do SweetPet">
+
+                <img class="logo-desktop" src="./src/assets/imgs/logo_desktop.png" alt="Logo do SweetPet">
+            </a>
+
+            <nav class="sidebar-menu" id="sidebar">
+                <i class="fa-solid fa-xmark" id="close"></i>
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+
+
+            <div id="box-menu">
+                <div class="icon-heart-glass">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <div id="menu">
+                    <p class="text-menu">MENU</p>
+                    <i class="fa-solid fa-bars" ></i>
+                </div>
+            </div>
+            
+        </section>
+        
+
+        <section class="slideshow-wrapper">
+           
+            <div class="slideshow-track" id="slideshowTrack">
+                
+                <!-- Slide 1 -->
+                <div class="slide">
+
+                    <!-- img mobile -->
+                    <img class="mobile" src="./src/assets/imgs/img_mobile_1.png" alt="Imagem 1">
+
+                    <!-- img tablet -->
+                    <img class="tablet" src="./src/assets/imgs/img_tablet_1.png" alt="Imagem 1">
+                    
+                    <!-- img desktop -->
+                    <span class="cont-img-desktop">
+                        <span class="desktop img_desk_1"></span>
+
+                        <div class="slide-content">
+                            <h2>Bem-vindo ao SweetPet!</h2>
+                            <p>Aqui você encontra tudo o que seu melhor amigo precisa: rações premium, acessórios incríveis e muito carinho.</p>
+                            <button>Compre agora</button>
+                        </div>
+                    </span>
+
+                    
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide">
+                    
+                    <video class="mobile" width="100%" autoplay muted loop>
+                        <source src="./src/assets/imgs/video_mobile_2.mp4" type="video/mp4">
+                    </video>
+
+                    <img class="tablet" src="./src/assets/imgs/img_tablet_2.png" alt="Imagem 2">
+
+                    <span class="cont-img-desktop cont_2">
+                        <span class="desktop img_desk_2"></span>
+
+                        <div class="slide-content">
+                            <h2>
+                                Qualidade que seu pet merece
+                            </h2>
+                            <p>
+                                Trabalhamos com as melhores marcas do mercado para garantir a saúde, a felicidade e o bem-estar do seu pet.
+                            </p>
+                            <button>Compre agora</button>
+                        </div>
+                    </span>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide">
+
+                    <img class="mobile" src="./src/assets/imgs/img_mobile_3.jpg" alt="Imagem 3">
+
+                    <img class="tablet" src="./src/assets/imgs/img_tablet_3.png" alt="Imagem 3">
+
+                    <span class="cont-img-desktop">
+                        <span class="desktop img_desk_3"></span>
+
+                        <div class="slide-content">
+                            <h2>
+                                Amor em cada detalhe
+                            </h2>
+                            <p>
+                                Venha conhecer nosso espaço e descubra por que a SweetPet é a escolha favorita de quem ama seus bichinhos.
+                            </p>
+                            <button>Compre agora</button>
+                        </div>
+                    </span>
+                    
+                </div>
+
+            </div>
+        </section>
+        
+    </header>
+    
+
+    <script>
+
+        //          SIDEBAR - MENU 
+        const menu = document.getElementById('menu');
+        const sidebar = document.getElementById('sidebar');
+        const iClose = document.getElementById('close');
+        menu.addEventListener('click', () =>{
+            
+            sidebar.classList.toggle('show-sidebar');
+        })
+
+
+        iClose.addEventListener('click', () =>{
+            
+            sidebar.classList.toggle('show-sidebar');
+        })
+
+        // ------------------------------------
+
+        // 1. Pegar os elementos
+        const track = document.getElementById('slideshowTrack');
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0; // Começa no slide 0 (primeiro)
+        const totalSlides = slides.length;
+
+        // 2. Função que avança para o próximo slide (INSTANTANEAMENTE)
+        function nextSlide() {
+            currentIndex++; // Avança para o próximo
+
+            // Se chegou no último, volta para o primeiro (0)
+            if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            }
+
+            // 3. Aplica a transformação SEM transição
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // 4. Inicia o temporizador: roda a função a cada 5000ms (5 segundos)
+        setInterval(nextSlide, 5000);
+    </script>
+
+</body>
+</html>
