@@ -1,0 +1,782 @@
+#header-index {
+    max-width: 100%;
+    height: 100%;
+}
+
+.first-section {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+
+    background: linear-gradient(
+        to bottom,
+        #ffffff42 5%,
+        #ffffff44 50%
+    );
+    
+}
+
+#logo-index {
+    display: flex;
+    align-items: center;
+
+    .logo-mobile{
+        width: 100px;
+        height: 100px;
+
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+}
+
+#box-menu{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+
+    .fa-magnifying-glass, .fa-heart, .fa-bars, .fa-cart-shopping {
+        width: 22px;
+        font-size: var(--h2-pacifico-mobile);
+        cursor: pointer;
+
+    }
+
+    .fa-cart-shopping {
+        display: none;
+    }
+}
+
+.icon-heart-glass {
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#box-menu .text-menu{
+    display: none;
+}
+
+.sidebar-menu {
+    width: 65%;
+    height: 100vh;
+    top: 0;
+    background-color: var(--sweet-white);
+    position: fixed;
+    right: 0;
+
+    /* 🚨 A MÁGICA AQUI: A transição fica na classe base! */
+    transition: transform 0.5s ease-in-out;
+    
+    /* Estado inicial: Escondida (deslocada 100% para a direita) */
+    transform: translateX(100%);
+    
+    
+}
+
+.sidebar-menu.show-sidebar{
+    transform: translateX(0%);
+}
+
+.sidebar-menu .fa-xmark {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    font-size: var(--h2-pacifico-mobile);
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    padding-right: 30px;
+} 
+
+.sidebar-menu ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    height: 50%;
+}
+
+.sidebar-menu ul li a {
+    font-family: var(--font-modern);
+    font-size: var(--paragraph-nunito);
+    color: var(--elements-secondary);
+    font-weight: 600;
+    display: flex;
+    padding-left: 40px;
+    width: 100%;
+    height: 50px;
+
+    align-items: center;
+}
+
+.sidebar-menu ul li a:hover {
+    background-color: var(--dark-green);
+    color: var(--sweet-white);
+}
+
+.sidebar-menu ul li a:active{
+    background-color: var(--sweet-green);
+    color: var(--sweet-dark);
+}
+
+
+/* O container que segura o slideshow */
+.slideshow-wrapper {
+    width: 100%;
+    overflow: hidden; /* Esconde o que sair da tela */
+    position: absolute;
+    top: 0;
+}
+
+/* O "trilho" que vai se mover */
+.slideshow-track {
+    display: flex;
+    width: 100%;
+
+    transition: none;
+}
+
+/* Cada slide individual */
+.slide {
+    flex: 0 0 100%; /* Ocupa a tela toda */
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+}
+
+/* A imagem do slide */
+.slide .mobile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+}
+
+
+.slide .tablet {
+    display: none;
+}
+
+.slide .desktop {
+    display: none;
+}
+
+/* O conteúdo do slide (texto) por cima da imagem */
+.slide-content {
+    position: absolute;
+    width: 100%;
+    z-index: 12;
+    top: 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+
+}
+
+.slide-content  h2 {
+    font-family: var(--font-title);
+    font-size: var(--h1-pacifico-mobile); 
+    padding: 100px 0 0 0 ;
+    text-align: center;
+    color: var(--elements-secondary);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+
+}
+
+.slide-content p {
+    font-family: var(--font-body);
+    font-size: var(--paragraph-nunito);
+    text-align: center;
+    color: var(--sweet-white);
+    font-weight: bolder;
+    letter-spacing: 2px;
+    line-height: 120%;
+}
+
+.slide-content button {
+    border: none;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: var(--font-modern);
+    font-size: var(--paragraph-nunito);
+    text-align: center;
+    font-weight: bold;
+    color: var(--sweet-white);
+    background: var(--elements-secondary);
+    cursor: pointer;
+}
+
+.slide-content button:hover{
+    background: var(--sweet-green);
+    color: var(--sweet-dark);
+    font-weight: bold;    
+}
+
+.slide-content button:active{
+    background: var(--sweet-green);
+    color: var(--sweet-dark);
+    font-weight: bold;
+    transform: translateY(2px);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------------------------------------ */
+/* DEFININDO OS GRADIENTES DIFERENTES */
+/* ------------------------------------------------ */
+
+/* Estilo BASE que todos os slides herdam */
+.slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
+/* Slide 1 */
+.slide:nth-child(1)::before {
+    opacity: 55%;
+    background: linear-gradient(
+        to bottom,
+        var(--sweet-white) 5%,
+        rgba(0, 0, 0, 0.877) 90%
+    );
+}
+
+/* Slide 2 */
+.slide:nth-child(2)::before {
+    opacity: 50%;
+    background: linear-gradient(
+        to bottom,
+        var(--sweet-white) 5%,
+        rgba(0, 0, 0, 0.884) 90%
+    );
+}
+
+
+/* Slide 3 */
+.slide:nth-child(3)::before {
+    opacity: 45%;
+    background: linear-gradient(
+        to bottom,
+        var(--sweet-white) 5%,
+        rgba(0, 0, 0, 0.884) 90%
+    );
+}
+
+/* ------------------------------------------------ */
+/* DEFININDO MEDIA QUERY PARA TABLE DESKTOP */
+/* ------------------------------------------------ */
+
+@media (768px <= width <= 1023px) {
+    
+    #header-index {
+        max-width: 1023px;
+        padding: 0px 0px;
+
+    }
+
+    .first-section{
+        padding: 0 10px 0 50px;
+        
+    }
+
+    #box-menu{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+
+        .fa-magnifying-glass, .fa-heart, .fa-bars, .fa-cart-shopping {
+            width: 22px;
+            font-size: var(--h2-pacifico-tablet);
+
+        }
+
+        .fa-bars {
+            display: none;
+        }
+
+        .fa-cart-shopping {
+            display: flex;
+        }
+    }
+
+    .icon-heart-glass {
+        width: 150px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #box-menu #menu {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-around;
+        width: 50px;
+        padding-right: 70px;
+    }
+
+    #box-menu .text-menu{
+        display: flex;
+        font-family: var(--font-body);
+        color: var(--dark);
+        font-size: var(--h2-pacifico-tablet);
+        font-weight: bold;
+    }
+
+    .sidebar-menu {
+        width: 50%;
+        height: 100vh;
+        top: 0;
+        background-color: var(--sweet-white);
+        position: fixed;
+        right: 0;
+
+        /* 🚨 A MÁGICA AQUI: A transição fica na classe base! */
+        transition: transform 0.5s ease-in-out;
+        
+        /* Estado inicial: Escondida (deslocada 100% para a direita) */
+        transform: translateX(100%);
+        
+        
+    }
+
+    .sidebar-menu .fa-xmark {
+        display: flex;
+        width: 100%;
+        height: 100px;
+        font-size: var(--paragraph-nunito-tablet);
+        flex-direction: row;
+        align-items: center;
+        justify-content: right;
+        padding-right: 40px;
+    } 
+
+    .sidebar-menu ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 15px;
+        text-align: center;
+        height: 50%;
+    }
+
+    .sidebar-menu ul li a {
+        font-family: var(--font-modern);
+        font-size: var(--paragraph-nunito-tablet);
+        color: var(--elements-secondary);
+        font-weight: 600;
+        display: flex;
+        padding-left: 40px;
+        width: 100%;
+        height: 70px;
+        align-items: center;
+    }
+
+
+    .slide {
+        flex: 0 0 100%;
+        height: 60vh;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide .tablet {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        display: flex;
+
+    }
+
+
+    .slide .mobile {
+        display: none;
+    }
+
+    .slide .desktop {
+        display: none;
+    }
+
+    .slide-content {
+        position: absolute;
+        width: 100%;
+        z-index: 12;
+        top: 0px;
+        padding: 0  20px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;        
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+
+    }
+
+    .slide-content h2 {
+        width: 100%;
+        font-family: var(--font-title);
+        font-size: var(--h1-pacifico-tablet);
+        padding: 100px 0 0 0;
+        text-align: left;
+        color: var(--elements-secondary);
+        text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+    }
+
+    .slide-content p {
+        width: 100%;
+        font-family: var(--font-body);
+        font-size: var(--paragraph-nunito-tablet);
+        text-align: left;
+        color: var(--sweet-white);
+        font-weight: bolder;
+        letter-spacing: 2px;
+        line-height: 150%;
+    }
+
+    .slide-content button {
+        border: none;
+        width: 200px;
+        height: 60px;
+        border-radius: 10px;
+        font-family: var(--font-modern);
+        font-size: var(--paragraph-nunito-tablet);
+        text-align: center;
+        font-weight: bold;
+        color: var(--sweet-white);
+        background: var(--elements-secondary);
+    }
+    
+
+}
+
+@media (1024px <= width){
+    
+    .first-section {
+        max-width: 1280px;
+        height: 150px;
+        background: none;
+        margin: auto;
+        padding: 0 30px;
+    }
+
+    #logo-index {
+        display: flex;
+        align-items: center;
+
+        .logo-mobile{
+            display: none;
+
+        }
+
+        .logo-desktop {
+            display: flex;
+            width: 150px;
+            height: 150px;
+            
+        }
+
+        .logo-desktop:hover {
+            filter: drop-shadow(0.125rem 0.125rem 0.3125rem var(--sweet-white));
+        }
+    }
+
+    #box-menu{
+
+        width: 20%;
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+        padding-right: 30px;
+
+        .fa-magnifying-glass, .fa-heart, .fa-bars, .fa-cart-shopping {
+            width: 22px;
+            font-size: var(--h3-quicksand-desktop);
+
+        }
+
+        .fa-magnifying-glass:hover, .fa-heart:hover, .fa-bars:hover, .fa-cart-shopping:hover {
+            text-shadow: 0px 0px 4px var(--sweet-white);
+        }
+        .fa-bars {
+            display: none;
+        }
+
+        .fa-cart-shopping {
+            display: flex;
+        }
+
+        .icon-heart-glass {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .sidebar-menu {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background: none;
+        position: inherit;
+        transform: translateX(0);;
+    }
+
+    .sidebar-menu .fa-xmark {
+        display: none;
+    }
+
+    .sidebar-menu ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
+        width: 100%;
+        height: 100%; 
+        align-items: center;
+    }
+
+    .sidebar-menu ul li {
+        height: 100%;
+        align-content: center;
+    }
+
+    .sidebar-menu ul li a {
+        font-family: var(--font-modern);
+        font-size: var(--h3-quicksand-desktop);
+        color: var(--dark);
+        font-weight: 600;
+        display: flex;
+        padding-left: 0;
+        width: 120px;
+        height: 60px;
+        justify-content: center;
+        
+    }
+
+    .sidebar-menu ul li a:hover {
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: none;
+        text-shadow: 0px 0px 4px var(--sweet-white);
+        color: var(--dark);
+    }
+
+    .sidebar-menu ul li a:active {
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: var(--dark);
+        color: var(--sweet-white);
+        transform: translateY(2px);
+        text-shadow: none;
+        box-shadow: 0px 2px 6px #FFFFFF4d;
+    }
+
+    .cont-img-desktop {
+        outline: 1px solid var(--sweet-dark);
+        
+        background: linear-gradient(
+            to bottom,
+            #ffffff 5%,
+            #ffffff90 50%
+        );
+        position: relative;
+        display: flex;
+        width: 970px;
+        height: 400px;
+        top: 165px;
+        left: 0;
+        margin: auto;
+        border-radius: 20px;
+        z-index: 5;
+
+        
+
+    }
+
+    .cont_2 {
+        overflow: hidden;
+    }
+
+
+    .slide .desktop {
+        width: 592px;
+        height: 500px;
+        object-fit: cover;
+        position: absolute;
+        top: 83px;
+        right: -30px;
+        z-index: 0;
+        display: flex;
+        
+    }
+
+    .slide .img_desk_1,
+    .slide .img_desk_2,
+    .slide .img_desk_3 {
+        filter: drop-shadow(0.125rem 0.125rem 0.3125rem var(--sweet-dark));
+        
+    }
+
+
+    .slide .img_desk_1 {
+        width: 592px;
+        height: 320px;
+        object-fit: cover;
+        position: absolute;
+        top: 152px;
+        right: 15px;
+        z-index: 0;
+        display: flex;
+        background: url(../assets/imgs/img_desktop_1.png) no-repeat center;
+        background-size: cover;
+        object-fit: cover;
+        
+
+    }
+
+    .slide .img_desk_2 {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        position: absolute;
+        top: 1px;
+        right: -50px;
+        z-index: 0;
+        display: flex;
+        background: url(../assets/imgs/img_desktop_2.png) no-repeat center;
+        background-size: cover;
+        object-fit: cover;
+        transform: scaleX(-1);
+        z-index: 50;
+    }
+
+
+    .slide .img_desk_3 {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        position: absolute;
+        top: 0px;
+        right: -50px;
+        z-index: 0;
+        display: flex;
+        background: url(../assets/imgs/img_desktop_3.png) no-repeat center;
+        background-size: cover;
+        object-fit: cover;
+        z-index: 50;
+    }
+
+    
+
+    .slide .mobile {
+        display: none;
+    }
+
+    .slide .tablet {
+        display: none;
+    }
+
+    .slide-content {
+        position: absolute;
+        width: 970px;
+        z-index: 12;
+        top: 0px;
+        padding: 0 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+        height: 400px;
+
+    }
+
+    .slide-content h2 {
+        width: 100%;
+        font-family: var(--font-title);
+        font-size: var(--h1-pacifico-desktop);
+        padding: 0px 0 0 0;
+        text-align: left;
+        color: var(--elements-secondary);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .slide-content p {
+        width: 55%;
+        font-family: var(--font-body);
+        font-size: var(--h2-pacifico-desktop);
+        text-align: left;
+        color: var(--sweet-white);
+        font-weight: bolder;
+        letter-spacing: 2px;
+        line-height: 120%;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .slide-content button {
+        border: none;
+        width: 200px;
+        height: 60px;
+        border-radius: 10px;
+        font-family: var(--font-modern);
+        font-size: var(--paragraph-nunito-tablet);
+        text-align: center;
+        font-weight: bold;
+        color: var(--sweet-white);
+        background: var(--elements-secondary);
+    }
+
+    /* Estilo BASE que todos os slides herdam */
+    .slide::before {
+        content: "";
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0; 
+    }
+
+
+    .slide {
+        opacity: 100%;
+        background: var(--elements-secondary);
+    }
+
+}
