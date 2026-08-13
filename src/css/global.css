@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+
+    /* Paleta de Cores */
+    --elements-secondary: #2a574a;
+    --dark-green: #1B5E20;
+    --sweet-green: #66BB6A;
+    --light-green: #A5D6A7;
+    
+    
+    --sweet-white: #FFFFFF;      /* Branco - Pureza */
+    --sweet-dark: #333333;       /* Cinza Escuro - Contraste */
+    --dark: #000000;
+    --color-desktop: #18181B;
+
+    /* Tipografia */
+    --font-title: 'Fredoka', sans-serif;
+    --font-sub-title: 'Pacifico', cursive;
+    --font-body: 'Nunito', sans-serif;
+    --font-modern: 'Quicksand', sans-serif;
+
+    /* Sizes */
+    --h1-pacifico-mobile: 50px;
+    --h2-pacifico-mobile: 24px;
+    --h3-quicksand-mobile: 20px;
+    --paragraph-nunito: 18px;
+    --button-quicksand: 18px;
+
+    --h1-pacifico-tablet: 58px;
+    --h2-pacifico-tablet: 30px;
+    --paragraph-nunito-tablet: 22px;
+    
+    --h1-pacifico-desktop: 60px;
+    --h2-pacifico-desktop: 32px;
+    --h3-quicksand-desktop: 26px;
+    
+}
+
+html {
+    scrollbar-width: none;
+    background-color: var(--sweet-dark);
+}
+
+@media (1024px <= width) {
+    html {
+        scrollbar-width: initial;
+    }       
+}
+
+
+body {
+    background-color: var(--sweet-dark);
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+}
+
+ul {
+    list-style: none; 
+}
+
+a {
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
