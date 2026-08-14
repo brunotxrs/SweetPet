@@ -23,10 +23,10 @@
                 <i class="fa-solid fa-xmark" id="close"></i>
 
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#pages">Pages</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
 
@@ -46,9 +46,8 @@
             </div>
             
         </section>
-        
 
-        <section class="slideshow-wrapper">
+        <section id="home" class="slideshow-wrapper">
            
             <div class="slideshow-track" id="slideshowTrack">
                 
@@ -122,12 +121,112 @@
                     
                 </div>
 
+                <div class="slideshow-points">
+                    <span class="spinner-point apply-background"></span>
+                    <span class="spinner-point"></span>
+                    <span class="spinner-point"></span>
+                </div>
+
             </div>
         </section>
-        
     </header>
-    
 
+    <main>
+        <!-- Elemento para exibição de spinner -->
+        <section class="container-slider">
+            <img class="cont_slide visible" src="./src/assets/imgs/img_main.png" alt="image for main">
+            <img class="cont_slide" src="./src/assets/imgs/img_main.png" alt="image for main" style="transform: scaleX(-1);">
+            <img class="cont_slide" src="./src/assets/imgs/img_main.png" alt="image for main">
+        </section>
+
+        <!-- Cards de compras para shop--> 
+        <section class="container-cards">
+            <div class="card-shop">
+                <img class="img-card-shop_1" src="./src/assets/imgs/card_1.png" alt="dog with food">
+                <span class="info">
+                    <h3>Ração Nutritiva para cães</h3>
+                    <span class="btn-shop">Compre agora</span>
+                </span>
+            </div>
+            <div class="card-shop">
+                <img class="img-card-shop_2" src="./src/assets/imgs/card_2.png" alt="dog with food">
+                <span class="info">
+                    <span class="premium">Economize até 30%</span>
+                    <h3>Ração saudável para gatos</h3>
+                    <span class="btn-shop">Compre agora</span>
+                </span>
+            </div>
+        </section>
+
+        <section id="shop" class="container-category">
+
+            <h4>Categorias de Alimentos</h4>
+            
+            <div class="container-category-foods">
+
+                <div class="box-foods">
+                    <a href="#">
+                        <img src="./src/assets/imgs/icon-1.webp" alt="icone de cachorro">
+                    </a>
+                    <div>
+                        <p>Ração para cães</p>
+                    </div>
+                </div>
+
+                <div class="box-foods">
+                    <a href="#">
+                        <img src="./src/assets/imgs/icon-2.png" alt="icone de aquário de peixe">
+                    </a>
+                    <div>
+                        <p>Ração para peixes</p>
+                    </div>
+                </div>
+
+                <div class="box-foods">
+                    <a href="#">
+                        <img src="./src/assets/imgs/icon-3.png" alt="icone de coelho">
+                    </a>
+                    <div>
+                        <p>Ração para coelhos</p>
+                    </div>
+                </div>
+
+                <div class="box-foods">
+                    <a href="#">
+                        <img src="./src/assets/imgs/icon-4.webp" alt="icone de gato">
+                    </a>
+                    <div>
+                        <p>Ração para gatos</p>
+                    </div>
+                </div>
+
+                <div class="box-foods">
+                    <a href="#">
+                        <img src="./src/assets/imgs/icon-5.webp" alt="icone de pássaro">
+                    </a>
+                    <div>
+                        <p>Ração para pássaros</p>
+                    </div>
+                </div>
+
+                <div class="box-foods">
+                    <a href="#">
+                        <img src="./src/assets/imgs/icon-6.webp" alt="icone de lagartos">
+                    </a>
+                    <div>
+                        <p>Ração para camaleões</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        
+    </main>
+
+
+    <i class="fa-solid fa-circle-up" id="btnTopo"></i>
     <script>
 
         //          SIDEBAR - MENU 
@@ -147,27 +246,59 @@
 
         // ------------------------------------
 
-        // 1. Pegar os elementos
-        const track = document.getElementById('slideshowTrack');
-        const slides = document.querySelectorAll('.slide');
-        let currentIndex = 0; // Começa no slide 0 (primeiro)
-        const totalSlides = slides.length;
+        var myIndex = 0;
+        carousel();
 
-        // 2. Função que avança para o próximo slide (INSTANTANEAMENTE)
-        function nextSlide() {
-            currentIndex++; // Avança para o próximo
-
-            // Se chegou no último, volta para o primeiro (0)
-            if (currentIndex >= totalSlides) {
-                currentIndex = 0;
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("slide");
+            var p = document.getElementsByClassName("spinner-point");
+            var contSlide = document.getElementsByClassName("cont_slide");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+                contSlide[i].style.display = "none";
+                contSlide[i].classList.remove('visible');
+                p[i].classList.remove('apply-background');
             }
-
-            // 3. Aplica a transformação SEM transição
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            myIndex++;
+            
+            if (myIndex > x.length) {
+                myIndex = 1
+            }    
+            
+            x[myIndex-1].style.display = "block";
+            contSlide[myIndex-1].style.display = "block";
+            contSlide[myIndex-1].classList.add('visible');
+            p[myIndex-1].classList.add('apply-background');
+            setTimeout(carousel, 5000); // Change image every 2 seconds
         }
 
-        // 4. Inicia o temporizador: roda a função a cada 5000ms (5 segundos)
-        setInterval(nextSlide, 5000);
+
+        // Pega o elemento do botão
+        const meuBotao = document.getElementById("btnTopo");
+
+        // Quando o usuário rolar a página, executa a função
+        window.onscroll = function() {
+            verificarRolagem();
+        };
+
+        function verificarRolagem() {
+        // Se rolou mais de 20px do topo, mostra o botão. Senão, esconde.
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            meuBotao.style.display = "block";
+        } else {
+            meuBotao.style.display = "none";
+        }
+        }
+
+        // Quando o usuário clicar no botão, rola para o topo
+        meuBotao.addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" /* Faz a rolagem ser suave */
+        });
+        });
+
     </script>
 
 </body>

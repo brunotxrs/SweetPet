@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    z-index: 2;
+    z-index: 15;
 
     background: linear-gradient(
         to bottom,
@@ -294,12 +294,29 @@
     #header-index {
         max-width: 1023px;
         padding: 0px 0px;
+        height: 614.4px;
 
     }
 
     .first-section{
         padding: 0 10px 0 50px;
+        z-index: 15;
         
+    }
+
+    .slideshow-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        height: 615px;
+    }
+
+    .slideshow-track {
+        display: flex;
+        width: 100%;
+        transition: none;
+        height: 100%;
     }
 
     #box-menu{
@@ -401,7 +418,7 @@
 
     .slide {
         flex: 0 0 100%;
-        height: 60vh;
+        height: 100%;
         position: relative;
         overflow: hidden;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -481,6 +498,13 @@
 }
 
 @media (1024px <= width){
+    
+    #header-index {
+        width: 100vw;
+        position: relative;
+        overflow: hidden;
+        height:  100vh; 
+    }
     
     .first-section {
         max-width: 1280px;
@@ -608,13 +632,8 @@
     }
 
     .cont-img-desktop {
-        outline: 1px solid var(--sweet-dark);
-        
-        background: linear-gradient(
-            to bottom,
-            #ffffff 5%,
-            #ffffff90 50%
-        );
+        outline: 1px solid var(--sweet-dark);  
+        background: var(--green-fine);
         position: relative;
         display: flex;
         width: 970px;
@@ -624,8 +643,7 @@
         margin: auto;
         border-radius: 20px;
         z-index: 5;
-
-        
+        box-shadow: 2px 2px 4px var(--sweet-dark);
 
     }
 
@@ -643,6 +661,8 @@
         right: -30px;
         z-index: 0;
         display: flex;
+
+        
         
     }
 
@@ -683,7 +703,7 @@
         background-size: cover;
         object-fit: cover;
         transform: scaleX(-1);
-        z-index: 50;
+        z-index: 5;
     }
 
 
@@ -699,7 +719,7 @@
         background: url(../assets/imgs/img_desktop_3.png) no-repeat center;
         background-size: cover;
         object-fit: cover;
-        z-index: 50;
+        z-index: 5;
     }
 
     
@@ -724,27 +744,28 @@
         justify-content: center;
         align-items: flex-start;
         height: 400px;
+        background: none;
 
     }
 
     .slide-content h2 {
-        width: 100%;
+        width: 75%;
         font-family: var(--font-title);
         font-size: var(--h1-pacifico-desktop);
         padding: 0px 0 0 0;
         text-align: left;
-        color: var(--elements-secondary);
+        color: var(--sweet-white);
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .slide-content p {
-        width: 55%;
+        width: 75%;
         font-family: var(--font-body);
         font-size: var(--h2-pacifico-desktop);
         text-align: left;
         color: var(--sweet-white);
         font-weight: bolder;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         line-height: 120%;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
@@ -776,7 +797,45 @@
 
     .slide {
         opacity: 100%;
-        background: var(--elements-secondary);
+        background: linear-gradient(135deg, #1b4d3e 0%, #c1e1c1 100%);
+        
+    }
+
+    .slideshow-track{ 
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slideshow-points {
+        width: 150px;
+        height: 120px;
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+        justify-content: center;
+        top: 520px;
+        left: 15%;
+        margin: auto;
+        z-index: 20;
+    }
+
+    .spinner-point {
+        display: flex;
+        height: 15px;
+        width: 15px;
+        padding:0;
+        border-radius: 50%;
+        background-color:var(--sweet-white);
+    }
+
+    .apply-background{
+        background-color: var(--dark-green);
+    }
+
+    .track {
+        transform: translateX(100%);
     }
 
 }
