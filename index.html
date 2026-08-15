@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,7 +11,7 @@
 </head>
 <body>
     <header id="header-index">
-        <section class="first-section">
+        <section class="first-section" id="header-fixed">
             <a href="./index.html" id="logo-index">
                 <img class="logo-mobile" src="./src/assets/imgs/logo_mobile.png" alt="Logo do SweetPet">
 
@@ -29,8 +28,6 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-
-
 
             <div id="box-menu">
                 <div class="icon-heart-glass">
@@ -121,18 +118,18 @@
                     
                 </div>
 
+                <!-- Componente de Spinner pra imagens -->
                 <div class="slideshow-points">
                     <span class="spinner-point apply-background"></span>
                     <span class="spinner-point"></span>
                     <span class="spinner-point"></span>
                 </div>
-
             </div>
         </section>
     </header>
 
     <main>
-        <!-- Elemento para exibição de spinner -->
+        <!-- Elemento para exibição de spinner background -->
         <section class="container-slider">
             <img class="cont_slide visible" src="./src/assets/imgs/img_main.png" alt="image for main">
             <img class="cont_slide" src="./src/assets/imgs/img_main.png" alt="image for main" style="transform: scaleX(-1);">
@@ -158,6 +155,7 @@
             </div>
         </section>
 
+        <!-- Componente shop Categorias --> 
         <section id="shop" class="container-category">
 
             <h4>Categorias de Alimentos</h4>
@@ -222,11 +220,101 @@
 
         </section>
 
-        
+        <!-- Componente Marcas de Parceiros --> 
+        <section id="pages" class="secao-marcas">
+            <h2 class="titulo-secao">Nossos Parceiros</h2>
+            
+            <div class="grid-marcas">
+                <!-- Logo 1: Royal Canin -->
+                <a href="https://www.royalcanin.com/br" target="_blank" class="logo-parceiro visible">
+                    <img src="./src/assets/imgs/logo-royal-canin.png" alt="Royal Canin" class="brands">
+                </a>
+
+                
+                <a href="https://www.hillspet.com.br" target="_blank" class="logo-parceiro visible">
+                    <img src="./src/assets/imgs/logo-hills.avif" alt="Hill's" class="brands">
+                </a>
+
+                
+                <a href="https://www.premierpet.com.br" target="_blank" class="logo-parceiro">
+                    <img src="./src/assets/imgs/logo-premier-atualizado.svg" alt="Premier Pet" class="brands">
+                </a>
+
+                <a href="https://www.petz.com.br" target="_blank" class="logo-parceiro">
+                    <img src="./src/assets/imgs/logo-petz-primary.svg" alt="Petz" class="brands">
+                </a>
+            </div>
+
+            <span class="roll_background"></span>
+        </section>
     </main>
 
-
+    <!-- Componente icone pra voltar a o inicio com rolagem --> 
     <i class="fa-solid fa-circle-up" id="btnTopo"></i>
+    
+    <footer id="contact" class="footer">
+        <section class="footer_logo">
+            <a href="./index.html">
+                <img src="./src/assets/imgs/logo_desktop.png" alt="logo SweetPet">
+            </a>
+        </section>
+
+        <form action="#" method="">
+            <input type="email" name="e-mail" id="email" placeholder="Seu E-mail Aqui">
+
+            <button type="submit">
+                Enviar
+            </button>
+
+            <p>Cadastre-se em nossa lista e ganhe 15% de desconto na sua primeira compra!</p>
+        </form>
+
+        <section class="container-ico-contact">
+            <div class="icons">
+                <a href="https://web.facebook.com/" target="_blank">
+                    <i class="fa-brands fa-square-facebook" ></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+
+            <div class="contacts">
+                <strong  class="titulo">Contate-nos</strong>
+                <p>
+                    WhatsApp: 
+                    <a href="https://wa.me/5522987654321" target="_blank">(22) 98765-4321
+                    </a>
+                </p>
+
+                <p>E-mail:
+                    <a href="mailto:sweetpet@sweetpet.com">
+                        sweetpet@sweetpet.com
+                    </a>
+                </p> 
+                <address>
+                    Av. 7 de Setembro, nº 42, Centro
+                </address>
+            </div>
+
+        </section>
+
+         
+
+
+
+        <section id="copyright">
+            <p>
+                © 2026 Developed by
+                <a href="https://github.com/brunotxrs" target="_blank"
+                >
+                    Bruno Teixeira
+                </a>
+                
+            </p>
+        </section>
+    </footer>
+    
     <script>
 
         //          SIDEBAR - MENU 
@@ -245,6 +333,7 @@
         })
 
         // ------------------------------------
+        
 
         var myIndex = 0;
         carousel();
@@ -267,15 +356,51 @@
             }    
             
             x[myIndex-1].style.display = "block";
-            contSlide[myIndex-1].style.display = "block";
-            contSlide[myIndex-1].classList.add('visible');
+
+            if(window.innerWidth < 768){
+                contSlide[myIndex-1].style.display = "block";
+                contSlide[myIndex-1].classList.add('visible');
+
+            }
+
             p[myIndex-1].classList.add('apply-background');
             setTimeout(carousel, 5000); // Change image every 2 seconds
+        }
+
+        var sequence = 0;
+        
+        if(window.innerWidth  < 1024){
+            
+            slidePopularBrand();
+        }
+
+        function slidePopularBrand(){
+          var index;
+          
+          var allBrands = document.getElementsByClassName('logo-parceiro');
+
+          for(index = 0; index < allBrands.length; index++){
+            allBrands[index].classList.remove('visible');
+
+          }
+
+          sequence++;
+
+          if(sequence > allBrands.length){
+            sequence = 1;
+          }
+
+
+          allBrands[sequence-1].classList.add('visible');
+
+          setTimeout(slidePopularBrand, 2000);
         }
 
 
         // Pega o elemento do botão
         const meuBotao = document.getElementById("btnTopo");
+        // pega o elemento do header
+        const headerFixed = document.getElementById('header-fixed');
 
         // Quando o usuário rolar a página, executa a função
         window.onscroll = function() {
@@ -284,12 +409,17 @@
 
         function verificarRolagem() {
         // Se rolou mais de 20px do topo, mostra o botão. Senão, esconde.
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            meuBotao.style.display = "block";
-        } else {
-            meuBotao.style.display = "none";
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "block";
+                headerFixed.classList.add('apply-header-fixed');
+                
+            } else {
+                meuBotao.style.display = "none";
+                headerFixed.classList.remove('apply-header-fixed');
+            }
         }
-        }
+
+        
 
         // Quando o usuário clicar no botão, rola para o topo
         meuBotao.addEventListener("click", function() {
