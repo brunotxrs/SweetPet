@@ -22,10 +22,10 @@
                 <i class="fa-solid fa-xmark" id="close"></i>
 
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#shop">Shop</a></li>
-                    <li><a href="#pages">Pages</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="my-selection-menu">Home</a></li>
+                    <li><a href="#shop" class="my-selection-menu">Shop</a></li>
+                    <li><a href="#pages" class="my-selection-menu">Pages</a></li>
+                    <li><a href="#contact" class="my-selection-menu">Contact</a></li>
                 </ul>
             </nav>
 
@@ -259,12 +259,22 @@
             </a>
         </section>
 
-        <form action="#" method="">
-            <input type="email" name="e-mail" id="email" placeholder="Seu E-mail Aqui">
+        <form action="#" method="" id="my-form">
+            <input type="text" name="e-mail" id="email" placeholder="Seu E-mail Aqui">
 
-            <button type="submit">
-                Enviar
-            </button>
+            <div class="container-envio">
+
+                <div class="elemento-original" id="elementoOriginal">
+                    <button type="submit" id="btnEnviar">
+                        Enviar
+                    </button>
+                </div>
+                <!-- Elemento que aparece durante o envio (ex: um "loading") -->
+                <div class="elemento-enviando" id="elementoEnviando">
+                   <img src="./src/assets/imgs/sendMensage.png" alt="carta">
+                   <span>E-mail enviado com sucesso!</span>
+                </div>
+            </div>
 
             <p>Cadastre-se em nossa lista e ganhe 15% de desconto na sua primeira compra!</p>
         </form>
@@ -299,10 +309,6 @@
 
         </section>
 
-         
-
-
-
         <section id="copyright">
             <p>
                 © 2026 Developed by
@@ -315,121 +321,7 @@
         </section>
     </footer>
     
-    <script>
-
-        //          SIDEBAR - MENU 
-        const menu = document.getElementById('menu');
-        const sidebar = document.getElementById('sidebar');
-        const iClose = document.getElementById('close');
-        menu.addEventListener('click', () =>{
-            
-            sidebar.classList.toggle('show-sidebar');
-        })
-
-
-        iClose.addEventListener('click', () =>{
-            
-            sidebar.classList.toggle('show-sidebar');
-        })
-
-        // ------------------------------------
-        
-
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("slide");
-            var p = document.getElementsByClassName("spinner-point");
-            var contSlide = document.getElementsByClassName("cont_slide");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";  
-                contSlide[i].style.display = "none";
-                contSlide[i].classList.remove('visible');
-                p[i].classList.remove('apply-background');
-            }
-            myIndex++;
-            
-            if (myIndex > x.length) {
-                myIndex = 1
-            }    
-            
-            x[myIndex-1].style.display = "block";
-
-            if(window.innerWidth < 768){
-                contSlide[myIndex-1].style.display = "block";
-                contSlide[myIndex-1].classList.add('visible');
-
-            }
-
-            p[myIndex-1].classList.add('apply-background');
-            setTimeout(carousel, 5000); // Change image every 2 seconds
-        }
-
-        var sequence = 0;
-        
-        if(window.innerWidth  < 1024){
-            
-            slidePopularBrand();
-        }
-
-        function slidePopularBrand(){
-          var index;
-          
-          var allBrands = document.getElementsByClassName('logo-parceiro');
-
-          for(index = 0; index < allBrands.length; index++){
-            allBrands[index].classList.remove('visible');
-
-          }
-
-          sequence++;
-
-          if(sequence > allBrands.length){
-            sequence = 1;
-          }
-
-
-          allBrands[sequence-1].classList.add('visible');
-
-          setTimeout(slidePopularBrand, 2000);
-        }
-
-
-        // Pega o elemento do botão
-        const meuBotao = document.getElementById("btnTopo");
-        // pega o elemento do header
-        const headerFixed = document.getElementById('header-fixed');
-
-        // Quando o usuário rolar a página, executa a função
-        window.onscroll = function() {
-            verificarRolagem();
-        };
-
-        function verificarRolagem() {
-        // Se rolou mais de 20px do topo, mostra o botão. Senão, esconde.
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                meuBotao.style.display = "block";
-                headerFixed.classList.add('apply-header-fixed');
-                
-            } else {
-                meuBotao.style.display = "none";
-                headerFixed.classList.remove('apply-header-fixed');
-            }
-        }
-
-        
-
-        // Quando o usuário clicar no botão, rola para o topo
-        meuBotao.addEventListener("click", function() {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth" /* Faz a rolagem ser suave */
-        });
-        });
-
-    </script>
+    <script type="module" src="./src/js/index.js"></script>
 
 </body>
 </html>
